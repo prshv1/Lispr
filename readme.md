@@ -3,21 +3,63 @@
 
 ## Day 0 UI prototype
 
-The first visual prototype is a lightweight native Python window. It is deliberately
+The first visual prototype is a lightweight native PySide6 window. It is deliberately
 click-through only: it does not record audio, save API keys, authenticate users, or
 open billing yet.
 
-### Run on Ubuntu
+### Look at the app while developing
+
+You do **not** build a binary while making changes. Lispr runs straight from
+`main.py`, the same way the old prototype did.
+
+Do this setup **once** after cloning the project. It creates `.venv`, a private
+folder containing PySide6 for this project only:
 
 ```bash
-sudo apt install python3 python3-tk
+sudo apt install python3 python3-venv
 git clone https://github.com/prshv1/Lispr.git
 cd Lispr
-python3 main.py
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
 ```
 
-The UI currently includes a dark sidebar, working invite-link copy dialog, recording
-history preview, speaking summary, and the requested settings controls.
+Then, every time you change the code, simply run:
+
+```bash
+.venv/bin/python main.py
+```
+
+That opens the app directly from your edited source code. Close the window,
+make another change, and run the same command again. There is no build step and
+no reinstall step during normal development.
+
+If you prefer the old short command, activate the project environment once per
+terminal window:
+
+```bash
+source .venv/bin/activate
+python main.py
+```
+
+`source .venv/bin/activate` only changes which Python your current terminal
+uses. It does not install the app. Close the terminal and you are back to your
+normal system Python.
+
+#### If Ubuntu says `venv` is unavailable
+
+Install the package matching the Python version shown in the error. For example,
+if it says `python3.14-venv`:
+
+```bash
+sudo apt install python3.14-venv
+```
+
+Then repeat the one-time setup commands above.
+
+The UI currently includes a native warm-paper desktop layout, a visual dictation
+state, working invite-link and transcript copy, deletable transcript-history preview,
+speaking summary, and settings controls. It is still a visual prototype: no recordings
+or accounts are persisted.
 
 ---
 
