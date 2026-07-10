@@ -1,6 +1,24 @@
 # Lispr Flow v0
 > Note: This name is temporary, i may think of a better name later 
 
+## Day 0 UI prototype
+
+The first visual prototype is a lightweight native Python window. It is deliberately
+click-through only: it does not record audio, save API keys, authenticate users, or
+open billing yet.
+
+### Run on Ubuntu
+
+```bash
+sudo apt install python3 python3-tk
+git clone https://github.com/prshv1/Lispr.git
+cd Lispr
+python3 main.py
+```
+
+The UI currently includes a dark sidebar, working invite-link copy dialog, recording
+history preview, speaking summary, and the requested settings controls.
+
 ---
 
 ## Why
