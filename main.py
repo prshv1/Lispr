@@ -86,7 +86,7 @@ class LisprFlow(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         self.setWindowTitle(APP_NAME)
-        self.resize(1280, 760)
+        self.resize(1400, 900)
         self.setMinimumSize(980, 660)
         self.recording = False
         self.recording_seconds = 0
