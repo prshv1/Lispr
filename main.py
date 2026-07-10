@@ -86,11 +86,11 @@ class LisprFlow(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         self.setWindowTitle(APP_NAME)
-        self.resize(1400, 900)
-        self.setMinimumSize(980, 660)
+        self.resize(1920, 1080)
+        self.setMinimumSize(1402, 900)
         self.recording = False
         self.recording_seconds = 0
-        self.light_mode = False
+        self.light_mode = True
         self.active_setting = "General"
         self.recordings = [
             ("today, 11:42", "I need to turn the project notes into a small next-steps list: finish the history view, test it on Ubuntu, and decide which transcription provider to start with."),
@@ -111,7 +111,7 @@ class LisprFlow(QMainWindow):
         self.display_font = font_family("Fraunces", "DejaVu Serif")
         self.body_font = font_family("Afacad", "Noto Sans")
         self.mono_font = font_family("IBM Plex Mono", "DejaVu Sans Mono")
-        QApplication.instance().setStyleSheet(self._build_stylesheet(THEMES["dark"]))
+        QApplication.instance().setStyleSheet(self._build_stylesheet(THEMES["light"]))
 
     def _build_stylesheet(self, p: dict) -> str:
         display, body, mono = self.display_font, self.body_font, self.mono_font
@@ -472,7 +472,9 @@ class LisprFlow(QMainWindow):
         appearance_label.setObjectName("muted")
         appearance_row.addWidget(appearance_label)
         appearance_row.addStretch()
-        self.theme_toggle = QPushButton("☾  dark mode")
+        self.theme_toggle = QPushButton("☀  light mode")
+        self.theme_toggle.setObjectName("themeToggle")
+        self.theme_toggle.setProperty("active", True)
         self.theme_toggle.setObjectName("themeToggle")
         self.theme_toggle.setCursor(Qt.PointingHandCursor)
         self.theme_toggle.clicked.connect(self._toggle_theme)
